@@ -1,0 +1,19 @@
+.HorizontalCard {
+}
+
+.HorizontalCard .ItemTitle {
+    color: #00aeef !important;
+}
+
+.HorizontalCard .ItemTitle:hover {
+    color: #428bca !important;
+    text-decoration: underline;
+}
+
+.HorizontalCard .MediaWraper .ImgWraper img {
+    width: 150px;
+}
+
+.HorizontalCard .MediaWraper .MoreDetailsButton {
+    margin-bottom: 5px;
+}
