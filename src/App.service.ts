@@ -35,6 +35,7 @@ const test = {
 }
 
 const AppService = () => {
+    const [currentTemplate,setCurrentTemplate] = useState('TemplateProductsCarousel')
     const [pages, setPages] = useState({
         id: uuid(),
         name:'home page',
@@ -99,6 +100,7 @@ const insertCard =(key:any)=>{
 
 const getPages =()=>pages.options
   return{
+    currentTemplate,
     getPages,
     moveCard,
     insertCard

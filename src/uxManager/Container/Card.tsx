@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd'
 import ItemTypes from './ItemTypes'
 import { XYCoord } from 'dnd-core'
+import DynamicComponent from '../../template/Template'
 
 const style = {
   border: '1px dashed gray',
@@ -17,14 +18,16 @@ export interface CardProps {
   index: number
   moveCard: (dragIndex: number, hoverIndex: number) => void
   cards?:any
+  block:any
 }
 
 interface DragItem {
   index: number
   id: string
   type: string
+  block:any
 }
-const Card: React.FC<CardProps> = ({ id, text, index, moveCard }) => {
+const Card: React.FC<any> = ({ id, text, index, moveCard }) => {
   const ref = useRef<HTMLDivElement>(null)
   const [, drop] = useDrop({
     accept: ItemTypes.CARD,
@@ -89,7 +92,7 @@ const Card: React.FC<CardProps> = ({ id, text, index, moveCard }) => {
   drag(drop(ref))
   return (
     <div ref={ref} style={{ ...style, opacity }}>
-      {text}
+      <DynamicComponent key='TemplateProductsCarousel'/>
     </div>
   )
 }

@@ -33,7 +33,7 @@ const data = [
 ];
 
 const HomePage = () => {
-    return data.map(block => <Template block={block} />);
+    return data.map(block => <Template key={block} />);
 };
 
 export default HomePage;

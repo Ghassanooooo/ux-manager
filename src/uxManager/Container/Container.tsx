@@ -4,7 +4,6 @@ import { useDrop } from 'react-dnd'
 
 import ItemTypes from './ItemTypes'
 import AppServices from '../../App.service'
-import TemplateFlash from '../../components/TemplateFlash/TemplateFlash'
 function getStyle(backgroundColor: string): React.CSSProperties {
     return {
       border: '1px solid rgba(0,0,0,0.2)',
@@ -31,7 +30,7 @@ function getStyle(backgroundColor: string): React.CSSProperties {
   }
 
 const style = {
-  width: 400,
+  width: '100%',
 }
 
 export interface Item {
@@ -91,7 +90,13 @@ const Container = () =>
 
     const renderCard = (card: any, index: number) => {
       return (
-       <TemplateFlash />
+        <Card
+          key={card.id}
+          index={index}
+          id={card.id}
+          text={card.key}
+          moveCard={moveCard}
+        />
       )
     }
 
