@@ -1,50 +1,54 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import TemplateLoading from '../components/Components/TemplateLoading/TemplateLoading';
 
-function DynamicComponent () {
- 
-    const {state,setState} = useState(
-        {
-            DynamicComponent: null,
-            isComponent: true,
-            key:'TemplateProductsCarousel'
-        }
-    )
-    useEffect(()=>{
-        handleOnClick();
-    },[])
-    const TemplateNotFound = () => (
-        <div style={{ height: 70, background: 'red', margin: 20 }}>{state.key} Template Not Found!</div>
+class DynamicComponent extends React.Component {
+    /* Sets the state to save the dynamic component when needed */
+    state = {
+        DynamicComponent: null,
+        isComponent: true,
+    };
+    TemplateNotFound = () => (
+        <div style={{ height: 70, background: 'red', margin: 20 }}>{this.props.template} Template Not Found!</div>
     );
-    const handleOnClick = async () => {
-        try {
-            const DynamicComponent = await import(
-                `../components/${state.key}/${state.key}`
-            );
 
-            setState({
+    componentDidMount() {
+        this.handleOnClick();
+    }
+
+    /*
+     * Function to be called onClick event.
+     * Waits for the import to be completed and stores the default exported
+     * value in the state so we can rendered when needed.
+     */
+    handleOnClick = async () => {
+        try {
+            const DynamicComponent = await import(`../components/${this.props.template}/${this.props.template}`);
+
+            this.setState({
                 DynamicComponent: DynamicComponent.default,
                 isComponent: true,
             });
         } catch (ex) {
-            setState({
-                ...state,
+            this.setState({
+                ...this.state,
                 isComponent: false,
             });
         }
     };
 
-        const { DynamicComponent } = state;
+    render() {
+        /* Gets the dynamically imported component */
+        const { DynamicComponent } = this.state;
 
-        return state.isComponent ? (
+        return this.state.isComponent ? (
             !DynamicComponent ? (
                 <TemplateLoading />
             ) : (
                 <DynamicComponent />
             )
         ) : (
-            TemplateNotFound()
+            this.TemplateNotFound()
         );
-
+    }
 }
 export default DynamicComponent;
