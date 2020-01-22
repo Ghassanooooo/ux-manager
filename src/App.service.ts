@@ -3,6 +3,7 @@ import update from 'immutability-helper';
 import uuid from 'uuid';
 
 const AppService = () => {
+    const [currentTemplateId, setCurrentTemplateId] = useState();
     const [currentTemplate, setCurrentTemplate] = useState('TemplateProductsCarousel');
     const [pages, setPages] = useState({
         id: uuid(),
@@ -50,33 +51,37 @@ const AppService = () => {
         ],
     });
 
+    const onTemplateHoverHandler = (id: string) => {
+        setCurrentTemplateId(id);
+    };
+
     const moveCard = useCallback(
         (dragIndex: any, hoverIndex: any) => {
             console.log();
             const clonePages = JSON.parse(JSON.stringify(pages));
-            const dragCard = clonePages.options[dragIndex]
-            const dragTarget = clonePages.options[hoverIndex]
-            console.log(dragTarget,' dragCard ==> ',dragCard)
-           clonePages.options.splice(hoverIndex, 1, dragCard)
-           clonePages.options.splice(dragIndex, 1, dragTarget)
-           setPages(clonePages)
-            console.log(' ===> clonePages ===>',clonePages)
+            const dragCard = clonePages.options[dragIndex];
+            const dragTarget = clonePages.options[hoverIndex];
+            console.log(dragTarget, ' dragCard ==> ', dragCard);
+            clonePages.options.splice(hoverIndex, 1, dragCard);
+            clonePages.options.splice(dragIndex, 1, dragTarget);
+            setPages(clonePages);
+            console.log(' ===> clonePages ===>', clonePages);
         },
         [pages],
     );
 
     const findCard = (id: string) => {
-        const card = pages.options.filter(c => `${c.id}` === id)[0]
+        const card = pages.options.filter(c => `${c.id}` === id)[0];
         return {
-          card,
-          index: pages.options.indexOf(card),
-        }
-      }
+            card,
+            index: pages.options.indexOf(card),
+        };
+    };
 
     const insertCard = (key: any) => {
- 
         const clonePages = JSON.parse(JSON.stringify(pages));
-        clonePages.options.push({
+
+        const item = {
             id: uuid(),
             name: 'table temp',
             template: key.name,
@@ -93,11 +98,15 @@ const AppService = () => {
                     product: 'product id (tz8888889999okmhgvbn)',
                 },
             ],
-        });
+        };
+        let currentIndex =
+            currentTemplateId && clonePages.options.findIndex((template: any) => currentTemplateId === template.id);
+        clonePages.options.splice(currentIndex + 1, 0, item);
         setPages(clonePages);
     };
-console.log('state ===========>>>>>>  ', pages)
+    console.log('state ===========>>>>>>  ', currentTemplateId);
     return {
+        onTemplateHoverHandler,
         currentTemplate,
         pages,
         moveCard,

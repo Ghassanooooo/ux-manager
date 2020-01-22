@@ -49,14 +49,14 @@ export interface ContainerState {
 }
 
 const Container = () => {
-    const { pages, moveCard, insertCard } = AppServices();
+    const { pages, moveCard, insertCard, onTemplateHoverHandler } = AppServices();
     // console.log('Container ==> ',pages.options)
     const [hasDropped, setHasDropped] = useState(false);
     const [hasDroppedOnChild, setHasDroppedOnChild] = useState(false);
 
     const [{ isOver, isOverCurrent, canDrop }, drop] = useDrop({
         accept: ItemTypes.BOX,
-     
+
         drop(item, monitor) {
             const didDrop = monitor.didDrop();
             if (didDrop) {
@@ -82,7 +82,14 @@ const Container = () => {
 
     const renderCard = (card: any, index: number) => {
         console.log('renderCard ==> ', card);
-        return !!card && !!card.template && <Card key={card.id} index={index} id={card.id} template={card.template} moveCard={moveCard} />;
+        return (
+            !!card &&
+            !!card.template && (
+                <div onMouseOver={() => onTemplateHoverHandler(card.id)}>
+                    <Card key={card.id} index={index} id={card.id} template={card.template} moveCard={moveCard} />
+                </div>
+            )
+        );
     };
 
     return (

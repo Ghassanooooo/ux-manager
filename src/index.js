@@ -7,21 +7,29 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'react-quill/dist/quill.snow.css';
 import './index.less';
-import { DragDropContextProvider } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
+import { DragDropContextProvider } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 import * as serviceWorker from './serviceWorker';
+import AppUxManager from './AppUxManager';
 
-console.log('HTML5Backend ===> ',HTML5Backend)
+console.log('HTML5Backend ===> ', HTML5Backend);
 
+const IS_UX_MANAGER = true;
 
 ReactDOM.render(
-    <BrowserRouter>
-    <DragDropContextProvider backend={HTML5Backend}>
-    <App />
-    </DragDropContextProvider>
-</BrowserRouter>
+    IS_UX_MANAGER ? (
+        <BrowserRouter>
+            <DragDropContextProvider backend={HTML5Backend}>
+                <AppUxManager />
+            </DragDropContextProvider>
+        </BrowserRouter>
+    ) : (
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    ),
 
-   ,document.getElementById('root'),
+    document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
