@@ -15,11 +15,12 @@ console.log('HTML5Backend ===> ',HTML5Backend)
 
 
 ReactDOM.render(
+    <BrowserRouter>
     <DragDropContextProvider backend={HTML5Backend}>
- <BrowserRouter>
     <App />
+    </DragDropContextProvider>
 </BrowserRouter>
-</DragDropContextProvider>
+
    ,document.getElementById('root'),
 );
 

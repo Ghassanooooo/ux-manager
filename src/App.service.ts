@@ -74,7 +74,7 @@ const AppService = () => {
       }
 
     const insertCard = (key: any) => {
-
+ 
         const clonePages = JSON.parse(JSON.stringify(pages));
         clonePages.options.push({
             id: uuid(),

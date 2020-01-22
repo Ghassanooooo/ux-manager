@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, Menu, Segment } from 'semantic-ui-react';
+import { Grid, Menu, Segment,Item, Icon } from 'semantic-ui-react';
 import Container from './Container/Container';
-import { useDrag, DragSourceMonitor } from 'react-dnd';
+import { useDrag, DragSourceMonitor, DragPreviewImage } from 'react-dnd';
 import ItemTypes from './Container/ItemTypes';
 import AppServices from '../App.service';
 
@@ -24,7 +24,7 @@ interface BoxProps {
 }
 
 export const Box: React.FC<BoxProps> = ({ name, handleItemClick, activeItem }) => {
-    const [{ isDragging }, drag] = useDrag({
+    const [{ isDragging }, drag,preview] = useDrag({
         item: { name, type: ItemTypes.BOX },
         end: (item: { name: string } | undefined, monitor: DragSourceMonitor) => {
             const dropResult = monitor.getDropResult();
@@ -40,9 +40,18 @@ export const Box: React.FC<BoxProps> = ({ name, handleItemClick, activeItem }) =
     const opacity = isDragging ? 0.4 : 1;
 
     return (
-        <div ref={drag} style={{ ...style, opacity }}>
-            <Menu.Item name={name} active={activeItem === name} onClick={handleItemClick} />
+     
+        <div ref={drag} style={{opacity}}>
+            <Item>
+
+
+  <Item.Content verticalAlign='middle'>
+    <Item.Header><Icon name='folder' /> {name}</Item.Header>
+  </Item.Content>
+</Item>
+        
         </div>
+      
     );
 };
 
@@ -52,13 +61,18 @@ export const UxMenu = (props: any) => {
     const handleItemClick = (e: any, props: any) => setActiveItem(props.name);
 
     return (
-        <Menu pointing vertical>
-            <Box name="TemplateProductsCarousel" handleItemClick={handleItemClick} activeItem={activeItem} />
+        <div  style={{    position: 'fixed'}}>
+     <Item.Group relaxed='very'>
+                <Box name="TemplateProductsCarousel" handleItemClick={handleItemClick} activeItem={activeItem} />
 
-            <Box name="TemplateFlash" handleItemClick={handleItemClick} activeItem={activeItem} />
+<Box name="TemplateFlash" handleItemClick={handleItemClick} activeItem={activeItem} />
 
-            <Box name="TemplateProductsTabCmx" handleItemClick={handleItemClick} activeItem={activeItem} />
-        </Menu>
+<Box name="TemplateProductsTabCmx" handleItemClick={handleItemClick} activeItem={activeItem} />
+        </Item.Group>
+        </div>
+   
+            
+     
     );
 };
 

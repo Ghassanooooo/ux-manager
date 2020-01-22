@@ -93,6 +93,7 @@ class App extends Component {
                 <Navbar>
               
                 <Container>
+                    
                         <UxManager />
                     </Container>
             

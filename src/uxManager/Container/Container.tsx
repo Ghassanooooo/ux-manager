@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import Card from './Card';
-import { useDrop } from 'react-dnd';
 
+import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 import AppServices from '../../App.service';
 function getStyle(backgroundColor: string): React.CSSProperties {
@@ -56,6 +56,7 @@ const Container = () => {
 
     const [{ isOver, isOverCurrent, canDrop }, drop] = useDrop({
         accept: ItemTypes.BOX,
+     
         drop(item, monitor) {
             const didDrop = monitor.didDrop();
             if (didDrop) {
