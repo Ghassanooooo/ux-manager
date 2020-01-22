@@ -5,8 +5,6 @@ import AuthRoute from './AuthRoute';
 import HomePageRouter from './public/HomePage/HomePage';
 import SupplementsRouter from './public/Supplements/Supplements';
 import AccountRouter from './public/Account/Account';
-import AdminSupplementsRouter from './admin/AdminSupplements/AdminSupplements';
-import AdminAddNewProductRouter from './admin/AdminAddNewProduct/AdminAddNewProduct';
 import RedirectMiddlewareRouter from './RedirectMiddleware';
 
 const RouterData = {
@@ -14,8 +12,6 @@ const RouterData = {
     ...AccountRouter,
     ...HomePageRouter,
     ...SupplementsRouter,
-    ...AdminSupplementsRouter,
-    ...AdminAddNewProductRouter,
 };
 
 const Router = () => (

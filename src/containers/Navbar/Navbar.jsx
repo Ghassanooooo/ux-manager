@@ -85,30 +85,6 @@ class DesktopContainer extends Component {
                                         </div>
                                     ),
                                 )}
-
-                                <Menu.Item position="right">
-                                    {this.props.isSignIn ? (
-                                        <Button
-                                            className="NavbarItem"
-                                            onClick={this.props.logoutHandler}
-                                            inverted={!fixed}
-                                        >
-                                            Logout
-                                        </Button>
-                                    ) : (
-                                        <Button className="NavbarItem" as={Link} to={Paths.Account} inverted={!fixed}>
-                                            Account
-                                        </Button>
-                                    )}
-                                    {this.props.isAdmin && (
-                                        <Checkbox
-                                            label="Admin Nav"
-                                            onChange={this.props.adminNavbarToggelHandler}
-                                            toggle
-                                            checked={this.props.isAdminNavbar}
-                                        />
-                                    )}
-                                </Menu.Item>
                             </Container>
                         </Menu>
                     </Segment>
@@ -176,11 +152,6 @@ class MobileContainer extends Component {
                                 <Menu.Item onClick={this.handleToggle}>
                                     <Icon name="sidebar" />
                                 </Menu.Item>
-                                <Menu.Item position="right">
-                                    <Button as={Link} to="/account" inverted>
-                                        Account
-                                    </Button>
-                                </Menu.Item>
                             </Menu>
                         </Container>
                     </Segment>
@@ -196,24 +167,9 @@ MobileContainer.propTypes = {
     children: PropTypes.node,
 };
 
-const ResponsiveContainer = ({
-    children,
-    adminNavbarToggelHandler,
-    isAdminNavbar,
-    isAdmin,
-    isSignIn,
-    logoutHandler,
-}) => (
+const ResponsiveContainer = ({ children }) => (
     <div>
-        <DesktopContainer
-            logoutHandler={logoutHandler}
-            isSignIn={isSignIn}
-            isAdmin={isAdmin}
-            isAdminNavbar={isAdminNavbar}
-            adminNavbarToggelHandler={adminNavbarToggelHandler}
-        >
-            {children}
-        </DesktopContainer>
+        <DesktopContainer>{children}</DesktopContainer>
         <MobileContainer>{children}</MobileContainer>
     </div>
 );
@@ -222,16 +178,6 @@ ResponsiveContainer.propTypes = {
     children: PropTypes.node,
 };
 
-const Navbar = ({ children, adminNavbarToggelHandler, isAdminNavbar, isAdmin, isSignIn, logoutHandler }) => (
-    <ResponsiveContainer
-        logoutHandler={logoutHandler}
-        isSignIn={isSignIn}
-        isAdmin={isAdmin}
-        isAdminNavbar={isAdminNavbar}
-        adminNavbarToggelHandler={adminNavbarToggelHandler}
-    >
-        {children}
-    </ResponsiveContainer>
-);
+const Navbar = ({ children }) => <ResponsiveContainer>{children}</ResponsiveContainer>;
 
 export default Navbar;

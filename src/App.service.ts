@@ -1,37 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import update from 'immutability-helper';
-
 import uuid from 'uuid';
-
-const test = {
-    home: {
-        id: 'uuid',
-        name: 'home page',
-        key: 'home',
-        title: 'fish oil',
-        description: 'some description',
-        options: [
-            {
-                id: 'uuid',
-                name: 'table temp',
-                key: 'TableTemlate',
-                title: 'fish oil',
-                description: 'some description',
-                options: [
-                    {
-                        id: 'uuid',
-                        name: 'table temp',
-                        key: 'TableComponent',
-                        title: 'fish oil',
-                        description: 'some description',
-                        // in the backend we pull the product by populate we pull just a bit info (id, desc, title, img)
-                        product: 'product id (tz8888889999okmhgvbn)',
-                    },
-                ],
-            },
-        ],
-    },
-};
 
 const AppService = () => {
     const [currentTemplate, setCurrentTemplate] = useState('TemplateProductsCarousel');

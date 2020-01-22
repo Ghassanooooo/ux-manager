@@ -4,11 +4,10 @@ import Navbar from './containers/Navbar/Navbar';
 import Footer from './containers/Footer/Footer';
 import Router from './Routers/Router';
 import jwtDecode from 'jwt-decode';
-import AdminNavbar from './containers/AdminNavbar/AdminNavbar';
 import { Container } from 'semantic-ui-react';
 import ErrorBound from './containers/ErrorBound/ErrorBound';
 import axios from 'axios';
-import UxManager from './uxManager/uxManager'
+import UxManager from './uxManager/uxManager';
 /**
 |--------------------------------------------------
 | Set the Token in the header for each req
@@ -90,7 +89,13 @@ class App extends Component {
     render() {
         return (
             <ErrorBound>
-                <UxManager />
+                <Navbar>
+                    <Container>
+                        <UxManager />
+                    </Container>
+
+                    <Footer />
+                </Navbar>
             </ErrorBound>
         );
     }
