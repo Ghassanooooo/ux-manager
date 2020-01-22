@@ -21,6 +21,24 @@ const AppService = () => {
                     {
                         id: uuid(),
                         name: 'table temp',
+                        component: 'component',
+                        title: 'fish oil',
+                        description: 'some description',
+                        // in the backend we pull the product by populate we pull just a bit info (id, desc, title, img)
+                        product: 'product id (tz8888889999okmhgvbn)',
+                    },
+                ],
+            },
+            {
+                id: uuid(),
+                name: 'table temp',
+                template: 'TemplateFlash',
+                title: 'fish oil',
+                description: 'some description',
+                options: [
+                    {
+                        id: uuid(),
+                        name: 'table temp',
                         component: 'TableComponent',
                         title: 'fish oil',
                         description: 'some description',
@@ -36,22 +54,27 @@ const AppService = () => {
         (dragIndex: any, hoverIndex: any) => {
             console.log();
             const clonePages = JSON.parse(JSON.stringify(pages));
-            const pagesOptions = JSON.parse(JSON.stringify(clonePages.options));
-            const dragCard = JSON.parse(JSON.stringify(pagesOptions[dragIndex]));
-            setPages(
-                update(pagesOptions, {
-                    $splice: [
-                        [dragIndex, 1],
-                        [hoverIndex, 0, dragCard],
-                    ],
-                }),
-            );
+            const dragCard = clonePages.options[dragIndex]
+            const dragTarget = clonePages.options[hoverIndex]
+            console.log(dragTarget,' dragCard ==> ',dragCard)
+           clonePages.options.splice(hoverIndex, 1, dragCard)
+           clonePages.options.splice(dragIndex, 1, dragTarget)
+           setPages(clonePages)
+            console.log(' ===> clonePages ===>',clonePages)
         },
         [pages],
     );
 
+    const findCard = (id: string) => {
+        const card = pages.options.filter(c => `${c.id}` === id)[0]
+        return {
+          card,
+          index: pages.options.indexOf(card),
+        }
+      }
+
     const insertCard = (key: any) => {
-        console.log('insertCard <== ==> ', key);
+
         const clonePages = JSON.parse(JSON.stringify(pages));
         clonePages.options.push({
             id: uuid(),
@@ -59,12 +82,21 @@ const AppService = () => {
             template: key.name,
             title: 'fish oil',
             description: 'some description',
-            options: [],
+            options: [
+                {
+                    id: uuid(),
+                    name: 'table temp',
+                    component: 'TableComponent',
+                    title: 'fish oil',
+                    description: 'some description',
+                    // in the backend we pull the product by populate we pull just a bit info (id, desc, title, img)
+                    product: 'product id (tz8888889999okmhgvbn)',
+                },
+            ],
         });
         setPages(clonePages);
-        console.log('insertCard ==>', key);
     };
-
+console.log('state ===========>>>>>>  ', pages)
     return {
         currentTemplate,
         pages,

@@ -8,6 +8,7 @@ import { Container } from 'semantic-ui-react';
 import ErrorBound from './containers/ErrorBound/ErrorBound';
 import axios from 'axios';
 import UxManager from './uxManager/uxManager';
+
 /**
 |--------------------------------------------------
 | Set the Token in the header for each req
@@ -90,9 +91,12 @@ class App extends Component {
         return (
             <ErrorBound>
                 <Navbar>
-                    <Container>
+              
+                <Container>
                         <UxManager />
                     </Container>
+            
+                   
 
                     <Footer />
                 </Navbar>

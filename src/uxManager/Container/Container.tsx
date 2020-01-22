@@ -81,7 +81,7 @@ const Container = () => {
 
     const renderCard = (card: any, index: number) => {
         console.log('renderCard ==> ', card);
-        return <Card key={card.id} index={index} id={card.id} template={card.template} moveCard={moveCard} />;
+        return !!card && !!card.template && <Card key={card.id} index={index} id={card.id} template={card.template} moveCard={moveCard} />;
     };
 
     return (
