@@ -1,0 +1,2 @@
+(this["webpackJsonpbazzon-app"]=this["webpackJsonpbazzon-app"]||[]).push([[20],{275:function(n,a,e){"use strict";e.r(a);var t=e(0),p=e.n(t);a.default=function(){return p.a.createElement("div",null,"Carousel")}}}]);
+//# sourceMappingURL=20.1d8abf83.chunk.js.map

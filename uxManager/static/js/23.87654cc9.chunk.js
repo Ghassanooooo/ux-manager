@@ -1,0 +1,2 @@
+(this["webpackJsonpbazzon-app"]=this["webpackJsonpbazzon-app"]||[]).push([[23],{279:function(n,e,t){"use strict";t.r(e);var a=t(0),p=t.n(a);e.default=function(n){return p.a.createElement("div",null,"SimpleSection")}}}]);
+//# sourceMappingURL=23.87654cc9.chunk.js.map

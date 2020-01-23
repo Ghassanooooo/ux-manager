@@ -1,0 +1,1 @@
+{"version":3,"sources":["containers/Pages/Supplements/Protein/Protein.jsx"],"names":["Protein"],"mappings":"iHAAA,2BAMeA,UAJC,WACZ,OAAO","file":"static/js/48.3099e1e1.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nconst Protein = () => {\r\n    return <div>All Protein ===></div>;\r\n};\r\n\r\nexport default Protein;\r\n"],"sourceRoot":""}

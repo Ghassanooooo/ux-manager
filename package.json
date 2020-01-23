@@ -19,8 +19,6 @@
         "axios": "^0.19.0",
         "better-npm-run": "^0.1.1",
         "cross-env": "^6.0.3",
-        "dotenv": "^8.2.0",
-        "env-cmd": "^10.0.1",
         "express": "^4.17.1",
         "immutability-helper": "^3.0.0",
         "jquery": "^3.4.1",
@@ -50,16 +48,30 @@
     },
     "scripts": {
         "components": "node server.js",
-        "start": "cross-env PORT=4000 craco start",
+        "start": "better-npm-run start",
+        "build:main": "rm -rf main/ && craco build && mv build main",
+        "build:ux": "better-npm-run build:ux && mv build uxManager",
         "start:ux": "better-npm-run start:ux",
-        "build": "craco build",
+        "build": "npm run build:main && npm run build:ux",
         "test": "craco test",
         "eject": "craco eject",
         "lint": "tsc --noEmit && eslint '*.{js,ts,tsx,jsx}' --quiet --fix"
     },
     "betterScripts": {
+        "start": {
+            "command": "cross-env PORT=4000 craco start",
+            "env": {
+                "REACT_APP_BACKEND_URL": "http://localhost:7000/"
+            }
+        },
         "start:ux": {
             "command": "craco start",
+            "env": {
+                "REACT_APP_IS_UX_MANAGER": true
+            }
+        },
+        "build:ux": {
+            "command": "rm -rf uxManager/ && craco build",
             "env": {
                 "REACT_APP_IS_UX_MANAGER": true
             }
@@ -96,7 +108,9 @@
         "eslint-plugin-react": "^7.16.0",
         "husky": "^3.1.0",
         "prettier": "^1.19.1",
+        "rollup-plugin-terser": "^5.2.0",
         "semantic-ui-less": "^2.4.1",
-        "semantic-ui-react": "^0.88.1"
+        "semantic-ui-react": "^0.88.1",
+        "terser-brunch": "^4.0.0"
     }
 }

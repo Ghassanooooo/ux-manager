@@ -1,0 +1,1 @@
+{"version":3,"sources":["containers/Pages/Supplements/Supplements.jsx"],"names":["Supplements"],"mappings":"iHAAA,2BAMeA,UAJK,WAChB,OAAO","file":"static/js/50.5e811e75.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nconst Supplements = () => {\r\n    return <div>supplements</div>;\r\n};\r\n\r\nexport default Supplements;\r\n"],"sourceRoot":""}

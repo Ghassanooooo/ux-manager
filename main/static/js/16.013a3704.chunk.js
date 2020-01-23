@@ -1,0 +1,2 @@
+(this["webpackJsonpbazzon-app"]=this["webpackJsonpbazzon-app"]||[]).push([[16,40],{280:function(e,a,t){"use strict";t.r(a);var n=t(0),s=t.n(n),c=t(247),p=t(244);t(536);a.default=function(){return s.a.createElement(c.a,{className:"TemplateFlashImg"},s.a.createElement(p.a,{className:"TemplateFlash",src:"https://www.bodybuilding.com/images/merchandising/november-2019/11-24-cyber-week-updated-525x420.jpg",alt:""}))}},536:function(e,a,t){}}]);
+//# sourceMappingURL=16.013a3704.chunk.js.map

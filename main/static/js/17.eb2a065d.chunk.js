@@ -1,0 +1,2 @@
+(this["webpackJsonpbazzon-app"]=this["webpackJsonpbazzon-app"]||[]).push([[17,46],{285:function(n,t,a){"use strict";a.r(t);var e=a(0),p=a.n(e);a(541);t.default=function(){return p.a.createElement("div",null,"TemplateProductsTabSims")}},541:function(n,t,a){}}]);
+//# sourceMappingURL=17.eb2a065d.chunk.js.map
