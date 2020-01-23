@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.less';
-import Navbar from './containers/Navbar/Navbar';
-import Footer from './containers/Footer/Footer';
-import Router from './Routers/Router';
+import './AppUxManager.less';
+import Navbar from '../containers/Navbar/Navbar';
+import Footer from '../containers/Footer/Footer';
+import Router from '../Routers/Router';
 import jwtDecode from 'jwt-decode';
 import { Container } from 'semantic-ui-react';
-import ErrorBound from './containers/ErrorBound/ErrorBound';
+import ErrorBound from '../containers/ErrorBound/ErrorBound';
 import axios from 'axios';
-import UxManager from './uxManager/uxManager';
+import UxManager from './uxManager';
 
 /**
 |--------------------------------------------------

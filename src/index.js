@@ -10,7 +10,7 @@ import './index.less';
 import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import * as serviceWorker from './serviceWorker';
-import AppUxManager from './AppUxManager';
+import AppUxManager from './uxManager/AppUxManager';
 
 console.log('HTML5Backend ===> ', HTML5Backend);
 

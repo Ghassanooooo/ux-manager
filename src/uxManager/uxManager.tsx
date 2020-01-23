@@ -24,29 +24,29 @@ interface BoxProps {
 export const Box: React.FC<BoxProps> = ({ name, handleItemClick, activeItem }) => {
     const [{ isDragging }, drag, preview] = useDrag({
         item: { name, type: ItemTypes.BOX },
-        end: (item: { name: string } | undefined, monitor: DragSourceMonitor) => {
-            const dropResult = monitor.getDropResult();
-            if (item && dropResult) {
-                //  alert(`You dropped ${item.name} into ${dropResult.name}!`)
-                // insertCard(name)
-            }
-        },
+        end: (item: { name: string } | undefined, monitor: DragSourceMonitor) => {},
         collect: monitor => ({
             isDragging: monitor.isDragging(),
         }),
     });
-    const opacity = isDragging ? 0.3 : 1;
+    const opacity = isDragging ? 0.7 : 1;
 
     return (
-        <div ref={drag} style={{ opacity }}>
-            <Item>
-                <Item.Content verticalAlign="middle">
-                    <Item.Header>
-                        <Icon name="folder" /> {name}
-                    </Item.Header>
-                </Item.Content>
-            </Item>
-        </div>
+        <>
+            <DragPreviewImage
+                connect={preview}
+                src="https://assets.cdn.moviepilot.de/files/f9d77471be0adcec13a1bd6ca75d1f40ec6327af8855622cbec7df4d0235/fill/640/307/One+Piece+-+Titelbild+%28Episode+of+East+Blue%29.jpg"
+            />
+            <div ref={drag} style={{ opacity }}>
+                <Item>
+                    <Item.Content verticalAlign="middle">
+                        <Item.Header>
+                            <Icon name="react" /> {name}
+                        </Item.Header>
+                    </Item.Content>
+                </Item>
+            </div>
+        </>
     );
 };
 
@@ -59,10 +59,13 @@ export const UxMenu = (props: any) => {
         <div style={{ position: 'fixed' }}>
             <Item.Group relaxed="very">
                 <Box name="TemplateProductsCarousel" handleItemClick={handleItemClick} activeItem={activeItem} />
-
                 <Box name="TemplateFlash" handleItemClick={handleItemClick} activeItem={activeItem} />
-
                 <Box name="TemplateProductsTabCmx" handleItemClick={handleItemClick} activeItem={activeItem} />
+                <Box name="TemplateProductsD" handleItemClick={handleItemClick} activeItem={activeItem} />
+                <Box name="TemplateProductsG3" handleItemClick={handleItemClick} activeItem={activeItem} />
+                <Box name="TemplateProductsG3DB" handleItemClick={handleItemClick} activeItem={activeItem} />
+                <Box name="TemplateProductsG4" handleItemClick={handleItemClick} activeItem={activeItem} />
+                <Box name="TemplateProductsTabSim" handleItemClick={handleItemClick} activeItem={activeItem} />
             </Item.Group>
         </div>
     );
