@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Grid, Menu, Segment, Item, Icon } from 'semantic-ui-react';
-import Container from './Container/Container';
+import Container from './Container';
 import { useDrag, DragSourceMonitor, DragPreviewImage } from 'react-dnd';
-import ItemTypes from './Container/ItemTypes';
+import ItemTypes from './ItemTypes';
 import AppServices from '../App.service';
 
 const style: React.CSSProperties = {

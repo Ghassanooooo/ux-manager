@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 import { XYCoord } from 'dnd-core';
-import DynamicComponent from '../../template/Template';
+import DynamicComponent from '../template/Template';
 
 const style = {
     border: '1px dashed gray',
@@ -10,8 +10,6 @@ const style = {
     marginBottom: '.5rem',
     backgroundColor: 'white',
     cursor: 'move',
- 
-    
 };
 
 export interface CardProps {
@@ -37,7 +35,7 @@ const Card: React.FC<any> = ({ id, template, index, moveCard }) => {
             if (!ref.current) {
                 return;
             }
-           
+
             const dragIndex = item.index;
             const hoverIndex = index;
             // Don't replace items with themselves
@@ -57,13 +55,11 @@ const Card: React.FC<any> = ({ id, template, index, moveCard }) => {
                 return;
             }
 
-      
             if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
                 return;
             }
             moveCard(dragIndex, hoverIndex);
 
-      
             item.index = hoverIndex;
         },
     });
@@ -79,7 +75,7 @@ const Card: React.FC<any> = ({ id, template, index, moveCard }) => {
     drag(drop(ref));
     return (
         <div ref={ref} style={{ ...style, opacity, position: 'relative' }}>
-            <div style={{ width :'100%',height:'100%',zIndex:1000,position: 'absolute'}}></div>
+            <div style={{ width: '100%', height: '100%', zIndex: 1000, position: 'absolute' }}></div>
             <DynamicComponent template={template} />
         </div>
     );

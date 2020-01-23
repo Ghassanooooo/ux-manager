@@ -11,13 +11,13 @@ import { DragDropContextProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import * as serviceWorker from './serviceWorker';
 import AppUxManager from './uxManager/AppUxManager';
-
+require('dotenv').config();
 console.log('HTML5Backend ===> ', HTML5Backend);
 
-const IS_UX_MANAGER = true;
+const REACT_APP_IS_UX_MANAGER = process.env.REACT_APP_IS_UX_MANAGER;
 
 ReactDOM.render(
-    IS_UX_MANAGER ? (
+    REACT_APP_IS_UX_MANAGER ? (
         <BrowserRouter>
             <DragDropContextProvider backend={HTML5Backend}>
                 <AppUxManager />

@@ -3,7 +3,7 @@ import Card from './Card';
 
 import { useDrag, useDrop, DropTargetMonitor } from 'react-dnd';
 import ItemTypes from './ItemTypes';
-import AppServices from '../../App.service';
+import AppServices from '../App.service';
 function getStyle(backgroundColor: string): React.CSSProperties {
     return {
         border: '1px solid rgba(0,0,0,0.2)',
